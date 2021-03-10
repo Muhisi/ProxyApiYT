@@ -6,7 +6,7 @@ const maximoIP = 10;
 require('dotenv').config();
 const redis = require('redis');
 
-const redisClient = redis.createClient
+/*const redisClient = redis.createClient
 ({
     port: port,         
     host: '120.0.0.1',       
@@ -14,7 +14,7 @@ const redisClient = redis.createClient
 
 redisClient.on('error', (err) => {
     console.log("Error " + err);
-  });
+  });*/
 
 const hostAPI = 'https://www.googleapis.com'
 
@@ -24,7 +24,7 @@ app.get('/youtube/v3/search', async (req, res) =>
     // redirigir request
     // logear datos
     // send response
-    redisClient.get(`IPControl:${req.ip}`, (err, result) =>
+    /*redisClient.get(`IPControl:${req.ip}`, (err, result) =>
     {
         if(result)
         {
@@ -41,7 +41,7 @@ app.get('/youtube/v3/search', async (req, res) =>
         {
             redisClient.setex(`IPControl:${req.ip}`, 600, 1);
         }
-    });
+    });*/
 
     await axios.get(`${hostAPI}${req.originalUrl}&key=${process.env.GOOGLE_KEY}`)
     .then(function (response) 
